@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SIK Clothing Slideshow</title>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+</head>
+<body>
+    <div class="slideshow-container">
+        <div class="slide fade">
+            <img src="image1.jpg" alt="SIK Clothing Image 1">
+        </div>
+        <div class="slide fade">
+            <img src="image2.jpg" alt="SIK Clothing Image 2">
+        </div>
+        <div class="slide fade">
+            <img src="image3.jpg" alt="SIK Clothing Image 3">
+        </div>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html>
+/* Styles for slideshow container */
+.slideshow-container {
+    max-width: 1000px;
+    margin: auto;
+    position: relative;
+}
+
+/* Hide all slides by default */
+.slide {
+    display: none;
+}
+
+/* Styles for images within slides */
+.slide img {
+    width: 100%;
+    height: auto;
+}
+
+/* Add navigation dots */
+.dot {
+    height: 10px;
+    width: 10px;
+    margin: 0 2px;
+    background-color: #bbb;
+    border-radius: 50%;
+    display: inline-block;
+    transition: background-color 0.6s ease;
+}
+
+/* Styles for active dot */
+.active {
+    background-color: #717171;
+}
+let slideIndex = 0;
+showSlides();
+
+function showSlides() {
+    let slides = document.getElementsByClassName("slide");
+    let dots = document.getElementsByClassName("dot");
+
+    for (let i = 0; i < slides.length; i++) {
+        slides[i].style.display = "none";
+    }
+
+    slideIndex++;
+
+    if (slideIndex > slides.length) {
+        slideIndex = 1;
+    }
+
+    for (let i = 0; i < dots.length; i++) {
+        dots[i].classList.remove("active");
+    }
+
+    slides[slideIndex - 1].style.display = "block";
+    dots[slideIndex - 1].classList.add("active");
+
+    setTimeout(showSlides, 3000); // Change image every 3 seconds
+}
